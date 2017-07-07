@@ -12,7 +12,7 @@ class AttrObj(object):
 
     __slots__ = []
     __setattr__ = dict.__setitem__
-    __iter__ = dict.iterkeys
+    __iter__ = dict.keys
 
     def __delattr__(self, name):
         try:
@@ -89,7 +89,7 @@ class DictUtils(object):
     @staticmethod
     def group_by(d, group_by_path):
         
-        for key, sub_dict in d.iteritems():
+        for key, sub_dict in d.items():
             if isinstance(sub_dict, dict):
                 DictUtils.traverse(sub_dict, group_by_path)
 
@@ -143,7 +143,7 @@ class Rdict(dict):
     def update(self, e=None, **f):
         if e is None:
             e = f
-        for k, v in e.iteritems():
+        for k, v in e.items():
             is_update_able = False
             if isinstance(v, collections.Mapping):
                 # If we already have a value for the given key
